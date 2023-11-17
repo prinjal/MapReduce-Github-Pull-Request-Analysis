@@ -8,6 +8,7 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
+import phase1.SentimentGroupComparator;
 import phase1.SentimentMapper;
 
 public class Main {
@@ -25,6 +26,9 @@ public class Main {
             job1.setMapperClass(SentimentMapper.class);
             job1.setMapOutputKeyClass(PatternInfo.class);
             job1.setMapOutputValueClass(SentimentInfo.class);
+
+//            Add group comparator for phase1
+            job1.setGroupingComparatorClass(SentimentGroupComparator.class);
 
             FileInputFormat.addInputPath(job1, new Path(inputArgs[0]));
             FileOutputFormat.setOutputPath(job1,new Path(inputArgs[1]));
