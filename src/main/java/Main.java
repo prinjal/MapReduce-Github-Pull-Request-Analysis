@@ -27,8 +27,6 @@ public class Main {
             job1.setReducerClass(SentimentReducer.class);
             job1.setMapOutputKeyClass(PatternInfo.class);
             job1.setMapOutputValueClass(SentimentInfo.class);
-            job1.setOutputKeyClass(Text.class);
-            job1.setOutputValueClass(Text.class);
             FileInputFormat.addInputPath(job1, new Path(inputArgs[0]));
             FileOutputFormat.setOutputPath(job1,new Path(inputArgs[1]));
             System.exit(job1.waitForCompletion(true) ? 0:1);

@@ -31,8 +31,6 @@ public class SentimentInfo implements Writable {
 
   @Override
   public String toString() {
-    return "SentimentInfo{" +
-        "sentimentType=" + sentimentType +
-        '}';
+    return String.valueOf(sentimentType);
   }
 }

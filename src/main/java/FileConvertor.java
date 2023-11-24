@@ -6,7 +6,7 @@ import java.util.List;
 
 public class FileConvertor {
     public static void main(String[] args) throws IOException, CsvValidationException {
-        String outputFilePath = "/Users/prinjaldave/Library/CloudStorage/OneDrive-NortheasternUniversity/[01] Northeastern/[01] Academic/[01] Courses/[04] Fall 2023/[01] CS6240/Project/Data/Formatted/";
+        String outputFilePath = "outputfile_path";
 
         List<String> inputFiles = new ArrayList<>();
 //    inputFiles.add("/Users/midhungopalakrishnan/Desktop/Reshmi/NeuClasses/Fall2023/ParallelDataProcess/Project/Data/archive-9/Sample1.csv");
@@ -15,7 +15,7 @@ public class FileConvertor {
 //    inputFiles.add("/Users/midhungopalakrishnan/Desktop/Reshmi/NeuClasses/Fall2023/ParallelDataProcess/Project/Data/archive-9/ghtorrent-2019-01-07.csv");
 //    inputFiles.add("/Users/midhungopalakrishnan/Desktop/Reshmi/NeuClasses/Fall2023/ParallelDataProcess/Project/Data/archive-9/ghtorrent-2019-02-04.csv");
 //    inputFiles.add("/Users/midhungopalakrishnan/Desktop/Reshmi/NeuClasses/Fall2023/ParallelDataProcess/Project/Data/archive-9/ghtorrent-2019-03-11.csv");
-        inputFiles.add("/Users/prinjaldave/Library/CloudStorage/OneDrive-NortheasternUniversity/[01] Northeastern/[01] Academic/[01] Courses/[04] Fall 2023/[01] CS6240/Project/Data/first_10000.csv");
+        inputFiles.add("inputfile_path");
 //        inputFiles.add("/Users/midhungopalakrishnan/Desktop/Reshmi/NeuClasses/Fall2023/ParallelDataProcess/Project/Data/archive-9/ghtorrent-2019-05-20.csv");
 
         for(String input: inputFiles) {
