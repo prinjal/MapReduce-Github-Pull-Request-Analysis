@@ -1,5 +1,6 @@
 model/DateInfo.class
 Main.class
+FileConvertor.class
 phase1/SentimentMapper.class
 util/Constants.class
 model/SentimentType.class

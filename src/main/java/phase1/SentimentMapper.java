@@ -145,6 +145,7 @@ public class SentimentMapper extends Mapper<LongWritable, Text, PatternInfo, Sen
     props.setProperty("annotators", "tokenize, parse, sentiment");
     pipeline = new StanfordCoreNLP(props);
     csvFormat=CSVFormat.EXCEL.builder()
+            .setRecordSeparator(',')
             .setSkipHeaderRecord(true)
             .setIgnoreSurroundingSpaces(true).build();
   }
@@ -157,9 +158,8 @@ public class SentimentMapper extends Mapper<LongWritable, Text, PatternInfo, Sen
       StringReader stringReader = new StringReader(value.toString());
       CSVParser csvParser = csvFormat.parse(stringReader);
       for (CSVRecord record : csvParser) {
+
         String comment = record.get(util.Constants.COMMENT_INDEX);
-        if (comment == null)
-          continue;
 
         SentimentType sentimentType = getSentiment(comment);
         SentimentInfo sentimentInfo = new SentimentInfo(sentimentType);
@@ -179,7 +179,7 @@ public class SentimentMapper extends Mapper<LongWritable, Text, PatternInfo, Sen
       }
       csvParser.close();
     } catch (IOException | RuntimeException e) {
-      e.printStackTrace(); // skip errors
+      e.printStackTrace();
     }
   }
 
