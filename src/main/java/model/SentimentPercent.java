@@ -32,10 +32,6 @@ public class SentimentPercent implements Writable {
 
     @Override
     public String toString() {
-        return "SentimentPercent{" +
-                "negativePercent=" + negativePercent +
-                ", positivePercent=" + positivePercent +
-                ", neutralPercent=" + neutralPercent +
-                '}';
+        return negativePercent+","+positivePercent+","+neutralPercent;
     }
 }

@@ -45,7 +45,7 @@ public class SentimentReducer extends Reducer<PatternInfo, SentimentInfo, Text, 
         }
         SentimentPercent sentimentPercent=new SentimentPercent(negativePercent,positivePercent,neutralPercent);
 
-        context.write(new Text(patternInfo.toString()),new Text(sentimentPercent.toString()));
+        context.write(null,new Text(patternInfo+","+sentimentPercent));
 
     }
 }
