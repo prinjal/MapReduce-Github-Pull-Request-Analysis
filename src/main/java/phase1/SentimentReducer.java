@@ -5,6 +5,7 @@ import model.PatternInfo;
 import model.SentimentInfo;
 import model.SentimentPercent;
 import model.SentimentType;
+import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
@@ -14,7 +15,7 @@ import java.util.Map;
 
 public class SentimentReducer extends Reducer<PatternInfo, SentimentInfo, Text, Text> {
 
-    protected void reduce(PatternInfo patternInfo, Iterable<SentimentInfo> values, Reducer<PatternInfo,SentimentInfo,Text,Text>.Context context)
+    protected void reduce(PatternInfo patternInfo, Iterable<SentimentInfo> values, Reducer<PatternInfo,SentimentInfo,NullWritable,Text>.Context context)
             throws IOException, InterruptedException {
 
         // Calculate total sum and count for all flight pairs' average delays
@@ -45,7 +46,7 @@ public class SentimentReducer extends Reducer<PatternInfo, SentimentInfo, Text, 
         }
         SentimentPercent sentimentPercent=new SentimentPercent(negativePercent,positivePercent,neutralPercent);
 
-        context.write(null,new Text(patternInfo+","+sentimentPercent));
+        context.write(NullWritable.get(),new Text(patternInfo+","+sentimentPercent));
 
     }
 }
