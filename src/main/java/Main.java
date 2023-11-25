@@ -3,6 +3,7 @@ import model.PatternInfo;
 import model.SentimentInfo;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
@@ -27,6 +28,8 @@ public class Main {
             job1.setReducerClass(SentimentReducer.class);
             job1.setMapOutputKeyClass(PatternInfo.class);
             job1.setMapOutputValueClass(SentimentInfo.class);
+            job1.setOutputKeyClass(NullWritable.class);
+            job1.setOutputValueClass(Text.class);
             FileInputFormat.addInputPath(job1, new Path(inputArgs[0]));
             FileOutputFormat.setOutputPath(job1,new Path(inputArgs[1]));
             System.exit(job1.waitForCompletion(true) ? 0:1);
