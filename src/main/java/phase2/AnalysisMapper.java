@@ -16,14 +16,14 @@ import java.util.Properties;
 
 import static util.Constants.*;
 
-public class AnalysisMapper extends Mapper<LongWritable, Text, PatternInfo, AnalysisSentiment> {
+public class AnalysisMapper extends Mapper<LongWritable, Text, AnalysisPattern, AnalysisSentiment> {
 
     @Override
-    protected void setup(Mapper<LongWritable, Text, PatternInfo, AnalysisSentiment>.Context context) {
+    protected void setup(Mapper<LongWritable, Text, AnalysisPattern, AnalysisSentiment>.Context context) {
     }
 
     protected void map(LongWritable key, Text value,
-                       Mapper<LongWritable, Text, PatternInfo, AnalysisSentiment>.Context context)
+                       Mapper<LongWritable, Text, AnalysisPattern, AnalysisSentiment>.Context context)
             throws IOException, InterruptedException {
     try{
             CSVReader csvReader = new CSVReader(new StringReader(value.toString()));
@@ -35,14 +35,14 @@ public class AnalysisMapper extends Mapper<LongWritable, Text, PatternInfo, Anal
                 String positivePercent = recordArr[POSITIVE_PERCENT];
                 String neutralPercent = recordArr[NEUTRAL_PERCENT];
 
-                PatternInfo patternInfo=new PatternInfo(PatternType.valueOf(patternType),patternValue);
+                AnalysisPattern analysisPattern=new AnalysisPattern(PatternType.valueOf(patternType),patternValue);
                 SentimentPercent sentimentPercent=new SentimentPercent(Double.parseDouble(negativePercent),
                         Double.parseDouble(positivePercent),
                         Double.parseDouble(neutralPercent));
 
-                AnalysisSentiment analysisSentiment=new AnalysisSentiment(patternInfo,sentimentPercent);
+                AnalysisSentiment analysisSentiment=new AnalysisSentiment(analysisPattern,sentimentPercent);
 
-                context.write(patternInfo,analysisSentiment);
+                context.write(analysisPattern,analysisSentiment);
 
             }
         } catch (CsvValidationException | CsvMalformedLineException | RuntimeException e) {

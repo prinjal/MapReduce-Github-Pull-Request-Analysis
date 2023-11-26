@@ -10,27 +10,27 @@ import java.io.IOException;
 
 public class AnalysisSentiment implements Writable {
 
-    private PatternInfo patternInfo;
+    private AnalysisPattern analysisPattern;
     private SentimentPercent sentimentPercent;
 
     public AnalysisSentiment() {
     }
 
-    public AnalysisSentiment(PatternInfo patternInfo, SentimentPercent sentimentPercent) {
-        this.patternInfo = patternInfo;
+    public AnalysisSentiment(AnalysisPattern analysisPattern, SentimentPercent sentimentPercent) {
+        this.analysisPattern = analysisPattern;
         this.sentimentPercent = sentimentPercent;
     }
 
     @Override
     public void write(DataOutput out) throws IOException {
-        this.patternInfo.write(out);
+        this.analysisPattern.write(out);
         this.sentimentPercent.write(out);
     }
 
     @Override
     public void readFields(DataInput in) throws IOException {
         try {
-            this.patternInfo=new PatternInfo(PatternType.valueOf(in.readUTF()),in.readUTF());
+            this.analysisPattern=new AnalysisPattern(PatternType.valueOf(in.readUTF()),in.readUTF());
             this.sentimentPercent=new SentimentPercent(in.readDouble(),in.readDouble(),in.readDouble());
         }
         catch (NullPointerException e){
@@ -42,7 +42,7 @@ public class AnalysisSentiment implements Writable {
     @Override
     public String toString() {
         return "AnalysisSentiment{" +
-                "patternInfo=" + patternInfo +
+                "patternInfo=" + analysisPattern +
                 ", sentimentPercent=" + sentimentPercent +
                 '}';
     }
