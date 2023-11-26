@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SentimentReducer extends Reducer<PatternInfo, SentimentInfo, Text, Text> {
+public class SentimentReducer extends Reducer<PatternInfo, SentimentInfo, NullWritable, Text> {
 
     protected void reduce(PatternInfo patternInfo, Iterable<SentimentInfo> values, Reducer<PatternInfo,SentimentInfo,NullWritable,Text>.Context context)
             throws IOException, InterruptedException {
