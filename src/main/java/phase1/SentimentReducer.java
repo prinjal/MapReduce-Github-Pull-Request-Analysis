@@ -18,7 +18,6 @@ public class SentimentReducer extends Reducer<PatternInfo, SentimentInfo, NullWr
     protected void reduce(PatternInfo patternInfo, Iterable<SentimentInfo> values, Reducer<PatternInfo,SentimentInfo,NullWritable,Text>.Context context)
             throws IOException, InterruptedException {
 
-        // Calculate total sum and count for all flight pairs' average delays
         int totalCount=0;
         Map<SentimentType,Integer> countMap=new HashMap<>();
         for (SentimentInfo value:values){
@@ -32,8 +31,6 @@ public class SentimentReducer extends Reducer<PatternInfo, SentimentInfo, NullWr
         double positivePercent=0.0;
         double neutralPercent=0.0;
         for (Map.Entry<SentimentType,Integer> entrySet:countMap.entrySet()){
-//            context.write(new Text(patternInfo.getPatternType() + " " + patternInfo.getPatternValue() )
-//                    ,new Text(entrySet.getKey() + " " +entrySet.getValue()));
             if (entrySet.getKey().equals(SentimentType.NEGATIVE)){
                 negativePercent=((double) entrySet.getValue() /totalCount)*100;
             }
