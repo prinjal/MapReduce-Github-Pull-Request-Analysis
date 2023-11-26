@@ -40,4 +40,12 @@ public class AnalysisPattern implements WritableComparable<AnalysisPattern> {
     public int compareTo(AnalysisPattern o) {
         return this.patternType.compareTo(o.getPatternType());
     }
+
+    @Override
+    public String toString() {
+        return "AnalysisPattern{" +
+                "patternType=" + patternType +
+                ", patternValue='" + patternValue + '\'' +
+                '}';
+    }
 }

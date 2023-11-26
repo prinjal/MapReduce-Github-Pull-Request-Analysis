@@ -1,5 +1,6 @@
 import java.io.IOException;
 
+import model.AnalysisPattern;
 import model.AnalysisSentiment;
 import model.PatternInfo;
 import model.SentimentInfo;
@@ -41,7 +42,7 @@ public class Main {
             job2.setJarByClass(Main.class);
             job2.setMapperClass(AnalysisMapper.class);
 //            job2.setReducerClass(SentimentReducer.class);
-            job2.setMapOutputKeyClass(PatternInfo.class);
+            job2.setMapOutputKeyClass(AnalysisPattern.class);
             job2.setMapOutputValueClass(AnalysisSentiment.class);
 //            job2.setOutputKeyClass(NullWritable.class);
 //            job2.setOutputValueClass(Text.class);

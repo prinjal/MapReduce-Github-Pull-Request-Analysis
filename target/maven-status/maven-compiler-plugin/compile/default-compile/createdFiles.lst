@@ -1,12 +1,13 @@
 model/DateInfo.class
-Main.class
 phase1/SentimentMapper.class
-util/Constants.class
-model/AnalysisSentiment.class
 model/SentimentType.class
 phase1/SentimentReducer.class
 model/PatternType.class
+model/SentimentPercent.class
+Main.class
+util/Constants.class
+model/AnalysisSentiment.class
+model/AnalysisPattern.class
 phase2/AnalysisMapper.class
 model/PatternInfo.class
-model/SentimentPercent.class
 model/SentimentInfo.class
