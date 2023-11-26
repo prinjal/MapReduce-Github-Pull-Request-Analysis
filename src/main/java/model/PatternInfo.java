@@ -48,9 +48,6 @@ public class PatternInfo implements WritableComparable<PatternInfo> {
 
   @Override
   public String toString() {
-    return "PatternInfo{" +
-        "patternType=" + patternType +
-        ", patternValue='" + patternValue + '\'' +
-        '}';
+    return patternType+","+patternValue;
   }
 }

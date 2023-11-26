@@ -3,6 +3,8 @@ Main.class
 phase1/SentimentMapper.class
 util/Constants.class
 model/SentimentType.class
+phase1/SentimentReducer.class
 model/PatternType.class
 model/PatternInfo.class
+model/SentimentPercent.class
 model/SentimentInfo.class

@@ -25,10 +25,12 @@ public class SentimentInfo implements Writable {
     sentimentType = SentimentType.valueOf(dataInput.readUTF());
   }
 
+  public SentimentType getSentimentType() {
+    return sentimentType;
+  }
+
   @Override
   public String toString() {
-    return "SentimentInfo{" +
-        "sentimentType=" + sentimentType +
-        '}';
+    return String.valueOf(sentimentType);
   }
 }

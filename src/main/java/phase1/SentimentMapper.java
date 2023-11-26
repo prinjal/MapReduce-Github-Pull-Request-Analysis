@@ -45,8 +45,8 @@ public class SentimentMapper extends Mapper<LongWritable, Text, PatternInfo, Sen
 
   @Override
   protected void map(LongWritable key, Text value,
-      Mapper<LongWritable, Text, PatternInfo, SentimentInfo>.Context context)
-      throws IOException, InterruptedException {
+                     Mapper<LongWritable, Text, PatternInfo, SentimentInfo>.Context context)
+          throws IOException, InterruptedException {
     try {
       CSVReader csvReader = new CSVReader(new StringReader(value.toString()));
       while(csvReader.peek() != null){
@@ -94,7 +94,7 @@ public class SentimentMapper extends Mapper<LongWritable, Text, PatternInfo, Sen
   }
 
   private void writeRecord(PatternType patternType, String patternValue, SentimentInfo sentimentInfo, Context context)
-      throws IOException, InterruptedException {
+          throws IOException, InterruptedException {
     if(patternValue == null || patternValue.trim().equals(""))
       return;
     PatternInfo patternInfo = new PatternInfo(patternType,patternValue);
