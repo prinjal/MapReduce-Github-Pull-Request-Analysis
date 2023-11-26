@@ -42,7 +42,7 @@ public class AnalysisSentiment implements Writable {
     @Override
     public String toString() {
         return "AnalysisSentiment{" +
-                "patternInfo=" + analysisPattern +
+                "analysisPattern=" + analysisPattern +
                 ", sentimentPercent=" + sentimentPercent +
                 '}';
     }
