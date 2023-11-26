@@ -22,12 +22,16 @@ public class SentimentPercent implements Writable {
 
     @Override
     public void write(DataOutput out) throws IOException {
-
+        out.writeDouble(this.negativePercent);
+        out.writeDouble(this.positivePercent);
+        out.writeDouble(this.neutralPercent);
     }
 
     @Override
     public void readFields(DataInput in) throws IOException {
-
+        this.negativePercent=in.readDouble();
+        this.positivePercent=in.readDouble();
+        this.neutralPercent=in.readDouble();
     }
 
     @Override

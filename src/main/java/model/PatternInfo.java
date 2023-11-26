@@ -13,6 +13,11 @@ public class PatternInfo implements WritableComparable<PatternInfo> {
   public PatternInfo() {
   }
 
+  public PatternInfo(PatternInfo patternInfo) {
+    this.patternType=patternInfo.patternType;
+    this.patternValue=patternInfo.patternValue;
+  }
+
   public PatternInfo(PatternType patternType, String patternValue) {
     this.patternType = patternType;
     this.patternValue = patternValue;
