@@ -1,6 +1,8 @@
 package model;
 
+import org.apache.commons.lang.ObjectUtils;
 import org.apache.hadoop.io.Writable;
+import org.apache.hadoop.io.WritableUtils;
 
 import java.io.DataInput;
 import java.io.DataOutput;
@@ -27,7 +29,21 @@ public class AnalysisSentiment implements Writable {
 
     @Override
     public void readFields(DataInput in) throws IOException {
-        this.patternInfo.readFields(in);
-        this.sentimentPercent.readFields(in);
+        try {
+            this.patternInfo=new PatternInfo(PatternType.valueOf(in.readUTF()),in.readUTF());
+            this.sentimentPercent=new SentimentPercent(in.readDouble(),in.readDouble(),in.readDouble());
+        }
+        catch (NullPointerException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public String toString() {
+        return "AnalysisSentiment{" +
+                "patternInfo=" + patternInfo +
+                ", sentimentPercent=" + sentimentPercent +
+                '}';
     }
 }
