@@ -1,6 +1,5 @@
 import java.io.IOException;
 
-import model.AnalysisPattern;
 import model.AnalysisSentiment;
 import model.PatternInfo;
 import model.SentimentInfo;
@@ -14,7 +13,11 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
 import phase1.SentimentMapper;
 import phase1.SentimentReducer;
+import phase2.AnalysisGroupComparator;
 import phase2.AnalysisMapper;
+import phase2.AnalysisPartitioner;
+import phase2.AnalysisReducer;
+import phase2.AnalysisSortComparator;
 
 public class Main {
 
@@ -41,11 +44,15 @@ public class Main {
             Job job2 = Job.getInstance(conf2, "Git request analyzer");
             job2.setJarByClass(Main.class);
             job2.setMapperClass(AnalysisMapper.class);
-//            job2.setReducerClass(SentimentReducer.class);
-            job2.setMapOutputKeyClass(AnalysisPattern.class);
+            job2.setGroupingComparatorClass(AnalysisGroupComparator.class);
+            job2.setSortComparatorClass(AnalysisSortComparator.class);
+            job2.setNumReduceTasks(5);
+            job2.setPartitionerClass(AnalysisPartitioner.class);
+            job2.setReducerClass(AnalysisReducer.class);
+            job2.setMapOutputKeyClass(AnalysisSentiment.class);
             job2.setMapOutputValueClass(AnalysisSentiment.class);
-//            job2.setOutputKeyClass(NullWritable.class);
-//            job2.setOutputValueClass(Text.class);
+            job2.setOutputKeyClass(Text.class);
+            job2.setOutputValueClass(Text.class);
             FileInputFormat.addInputPath(job2, new Path(inputArgs[1]));
             FileOutputFormat.setOutputPath(job2,new Path(inputArgs[1]+"finalOutput"));
 

@@ -34,8 +34,20 @@ public class SentimentPercent implements Writable {
         this.neutralPercent=in.readDouble();
     }
 
+    public double getNegativePercent() {
+        return negativePercent;
+    }
+
+    public double getPositivePercent() {
+        return positivePercent;
+    }
+
+    public double getNeutralPercent() {
+        return neutralPercent;
+    }
+
     @Override
     public String toString() {
-        return negativePercent+","+positivePercent+","+neutralPercent;
+        return String.format("%.2f,%.2f,%.2f",negativePercent,positivePercent,neutralPercent);
     }
 }
