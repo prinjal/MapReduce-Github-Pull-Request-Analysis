@@ -1,11 +1,16 @@
 model/DateInfo.class
+phase2/AnalysisReducer.class
+model/SentimentPercentage.class
+phase2/AnalysisGroupComparator.class
 phase1/SentimentMapper.class
 model/SentimentType.class
 phase1/SentimentReducer.class
 model/PatternType.class
 model/SentimentPercent.class
+phase2/AnalysisSortComparator.class
 Main.class
 util/Constants.class
+phase2/AnalysisPartitioner.class
 model/AnalysisSentiment.class
 model/AnalysisPattern.class
 phase2/AnalysisMapper.class

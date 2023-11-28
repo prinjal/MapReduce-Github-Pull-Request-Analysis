@@ -1,6 +1,5 @@
 package model;
 
-import org.apache.hadoop.io.Writable;
 import org.apache.hadoop.io.WritableComparable;
 
 import java.io.DataInput;
@@ -22,6 +21,10 @@ public class AnalysisPattern implements WritableComparable<AnalysisPattern> {
 
     public PatternType getPatternType() {
         return patternType;
+    }
+
+    public String getPatternValue() {
+        return patternValue;
     }
 
     @Override

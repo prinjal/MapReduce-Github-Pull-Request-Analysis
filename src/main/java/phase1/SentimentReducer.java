@@ -1,6 +1,5 @@
 package phase1;
 
-import com.google.common.collect.Iterables;
 import model.PatternInfo;
 import model.SentimentInfo;
 import model.SentimentPercent;
