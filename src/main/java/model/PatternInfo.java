@@ -25,7 +25,7 @@ public class PatternInfo implements WritableComparable<PatternInfo> {
 
   @Override
   public int compareTo(PatternInfo patternInfo) {
-    int compareType = this.patternType.compareTo(patternInfo.getPatternType());
+    int compareType = this.patternType.name().compareTo(patternInfo.getPatternType().name());
     if(compareType != 0)
       return compareType;
     return this.patternValue.compareTo(patternInfo.getPatternValue());

@@ -11,7 +11,9 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
+import phase1.SentimentGroupComparator;
 import phase1.SentimentMapper;
+import phase1.SentimentPartitioner;
 import phase1.SentimentReducer;
 import phase2.AnalysisGroupComparator;
 import phase2.AnalysisMapper;
@@ -32,6 +34,8 @@ public class Main {
             Job job1 = Job.getInstance(conf1, "Git request mapper");
             job1.setJarByClass(Main.class);
             job1.setMapperClass(SentimentMapper.class);
+            job1.setGroupingComparatorClass(SentimentGroupComparator.class);
+            job1.setPartitionerClass(SentimentPartitioner.class);
             job1.setReducerClass(SentimentReducer.class);
             job1.setMapOutputKeyClass(PatternInfo.class);
             job1.setMapOutputValueClass(SentimentInfo.class);
