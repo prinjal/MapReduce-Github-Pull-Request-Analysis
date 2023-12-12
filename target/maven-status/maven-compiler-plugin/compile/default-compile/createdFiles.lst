@@ -13,6 +13,8 @@ util/Constants.class
 phase2/AnalysisPartitioner.class
 model/AnalysisSentiment.class
 model/AnalysisPattern.class
+phase1/SentimentPartitioner.class
 phase2/AnalysisMapper.class
 model/PatternInfo.class
 model/SentimentInfo.class
+phase1/SentimentGroupComparator.class
